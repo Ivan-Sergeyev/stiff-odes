@@ -1,0 +1,3 @@
+results/*
+!results/plot_file.plt
+main.exe

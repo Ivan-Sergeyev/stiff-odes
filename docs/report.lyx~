@@ -87,7 +87,31 @@
 Сергеев Иван, 422
 \end_layout
 
+\begin_layout Standard
+todo : системы ОДУ (перенести из фотографии в docs/)
+\end_layout
+
+\begin_layout Standard
+todo : исследование на сходимость (см.
+ Петров, с.
+ 203)
+\end_layout
+
+\begin_layout Standard
+todo : результаты (вставить изображения results/*.png)
+\end_layout
+
+\begin_layout Standard
+todo : список литературы (https://www.google.ru/search?q=lyx+bybliography+change+l
+anguage&oq=lyx+bybliography+change+language&aqs=chrome..69i57.9567j0j7&sourceid=chr
+ome&ie=UTF-8#newwindow=1&q=lyx+bibliography+change+language&*)
+\end_layout
+
 \begin_layout Section
+Постановка задачи
+\end_layout
+
+\begin_layout Subsection
 Задача с одним генетическим признаком
 \end_layout
 
@@ -97,13 +121,13 @@
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{cases}
 \dot{x} & =x\left(1-\frac{1}{2}x-\frac{2}{7\alpha^{2}}y\right)\\
 \dot{y} & =y\left(2\alpha-\frac{7\alpha^{2}}{2}x-\frac{1}{2}y\right)\\
 \dot{\alpha} & =\varepsilon\left(2-7\alpha x\right)
-\end{cases}
-\]
+\end{cases}\label{eq:system-1}
+\end{equation}
 
 \end_inset
 
@@ -111,16 +135,80 @@
 \end_layout
 
 \begin_layout Standard
-Обозначим вектор неизвестных 
+Требуется ...
+\end_layout
+
+\begin_layout Subsection
+Задача с двумя генетическими признаками
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+\\
+\\
+\\
+\\
+\end{cases}\label{eq:system-2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Требуется ...
+\end_layout
+
+\begin_layout Subsection
+Задача с двумя генетическими признаками
+\end_layout
+
+\begin_layout Standard
+...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+\\
+\\
+\\
+\\
+\end{cases}\label{eq:system-3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Требуется ...
+\end_layout
+
+\begin_layout Section
+Используемые методы
+\end_layout
+
+\begin_layout Standard
+Для удобства записи обозначим 
 \begin_inset Formula $u$
 \end_inset
 
-, правую часть системы – 
+ вектор неизвестных, правую часть системы – 
 \begin_inset Formula $f\left(u\right)$
 \end_inset
 
 .
- В этих обозначениях система имеет компактный вид:
+ В этих обозначениях системы уравнений имеет компактный вид:
 \end_layout
 
 \begin_layout Standard
@@ -157,7 +245,10 @@
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+\begin_inset Formula $0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -166,7 +257,10 @@
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+\begin_inset Formula $0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -186,7 +280,10 @@
 \begin_inset Text
 
 \begin_layout Plain Layout
-1
+\begin_inset Formula $1$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -241,7 +338,7 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\epsilon=u_{n}-u_{2n}
+\epsilon=\frac{u_{n}-u_{2n}}{2^{1}-1}=u_{n}-u_{2n}
 \]
 
 \end_inset
@@ -251,34 +348,6 @@ u_{n+1}=u_{n}+\tau k_{1}
 
 \begin_layout Subsubsection
 Исследование на сходимость по сетке
-\end_layout
-
-\begin_layout Standard
-...
-\end_layout
-
-\begin_layout Subsubsection
-Результаты численного моделирования
-\end_layout
-
-\begin_layout Standard
-<графики 
-\begin_inset Formula $x\left(t\right)$
-\end_inset
-
-, 
-\begin_inset Formula $y\left(t\right)$
-\end_inset
-
-, 
-\begin_inset Formula $\alpha\left(t\right)$
-\end_inset
-
-, 
-\begin_inset Formula $x\left(y\right)$
-\end_inset
-
->
 \end_layout
 
 \begin_layout Standard
@@ -312,7 +381,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+\begin_inset Formula $0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -359,7 +431,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-1/2
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -368,7 +443,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-1/2
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -377,6 +455,62 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
 
 \end_layout
 
@@ -406,7 +540,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-1/2
+\begin_inset Formula $1$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -415,7 +552,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+\begin_inset Formula $0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -424,7 +564,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-1/2
+\begin_inset Formula $0$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -433,54 +576,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\end_layout
-
+\begin_inset Formula $1$
 \end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
 
-\begin_layout Plain Layout
 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-1
 \end_layout
 
 \end_inset
@@ -509,7 +608,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-1/6
+\begin_inset Formula $\frac{1}{6}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -518,7 +620,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-2/6
+\begin_inset Formula $\frac{2}{6}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -527,7 +632,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-2/6
+\begin_inset Formula $\frac{2}{6}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -536,7 +644,10 @@ u_{n+1}=u_{n}+\tau k_{1}
 \begin_inset Text
 
 \begin_layout Plain Layout
-1/6
+\begin_inset Formula $\frac{1}{6}$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -567,7 +678,7 @@ k_{1}=\tau\cdot f\left(u_{n}\right)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-k_{2}=\tau\cdot f\left(u_{n}+\frac{1}{2}\cdot k_{1}\right)
+k_{2}=\tau\cdot f\left(u_{n}+\frac{k_{1}}{2}\right)
 \]
 
 \end_inset
@@ -578,7 +689,7 @@ k_{2}=\tau\cdot f\left(u_{n}+\frac{1}{2}\cdot k_{1}\right)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-k_{3}=\tau\cdot f\left(u_{n}+\frac{1}{2}\cdot k_{2}\right)
+k_{3}=\tau\cdot f\left(u_{n}+\frac{k_{2}}{2}\right)
 \]
 
 \end_inset
@@ -608,36 +719,32 @@ u_{n+1}=u_{n}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
 
 \end_layout
 
+\begin_layout Standard
+Погрешность метода выражается через результаты вычислений, проведённых с
+ шагом по времени 
+\begin_inset Formula $\tau$
+\end_inset
+
+ и с шагом 
+\begin_inset Formula $\frac{\tau}{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\epsilon=\frac{u_{n}-u_{2n}}{2^{4}-1}=\frac{u_{n}-u_{2n}}{15}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsubsection
 Исследование на сходимость по сетке
-\end_layout
-
-\begin_layout Standard
-...
-\end_layout
-
-\begin_layout Subsubsection
-Результаты численного моделирования
-\end_layout
-
-\begin_layout Standard
-<графики 
-\begin_inset Formula $x\left(t\right)$
-\end_inset
-
-, 
-\begin_inset Formula $y\left(t\right)$
-\end_inset
-
-, 
-\begin_inset Formula $\alpha\left(t\right)$
-\end_inset
-
-, 
-\begin_inset Formula $x\left(y\right)$
-\end_inset
-
->
 \end_layout
 
 \begin_layout Standard
@@ -653,7 +760,162 @@ u_{n+1}=u_{n}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
 \end_layout
 
 \begin_layout Standard
+Метод Хаммера-Холлинсворта – неявный метод Рунге-Кутты четвёртого порядка
+ точности.
+ Ему соответствует таблица Бутчера
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}-\frac{\sqrt{3}}{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{4}-\frac{\sqrt{3}}{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}+\frac{\sqrt{3}}{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{4}+\frac{\sqrt{3}}{6}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 ...
+\end_layout
+
+\begin_layout Standard
+Погрешность метода выражается через результаты вычислений, проведённых с
+ шагом по времени 
+\begin_inset Formula $\tau$
+\end_inset
+
+ и с шагом 
+\begin_inset Formula $\frac{\tau}{2}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\epsilon=\frac{u_{n}-u_{2n}}{2^{4}-1}=\frac{u_{n}-u_{2n}}{15}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -664,8 +926,8 @@ u_{n+1}=u_{n}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
 ...
 \end_layout
 
-\begin_layout Subsubsection
-Результаты численного моделирования
+\begin_layout Section
+Результаты численных расчётов
 \end_layout
 
 \begin_layout Standard
@@ -685,7 +947,7 @@ u_{n+1}=u_{n}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
 \begin_inset Formula $x\left(y\right)$
 \end_inset
 
->
+ для 3 задач и 3 методов>
 \end_layout
 
 \begin_layout Standard
@@ -693,7 +955,11 @@ u_{n+1}=u_{n}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
 \end_layout
 
 \begin_layout Section
-Задача с двумя генетическими признаками
+?Выводы?
+\end_layout
+
+\begin_layout Standard
+...
 \end_layout
 
 \end_body

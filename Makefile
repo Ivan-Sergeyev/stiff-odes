@@ -4,7 +4,7 @@ build:
 	g++ -std=c++11 src/main.cpp -o main
 
 clean:
-	-rm ./main src/*.gch results/*.png
+	-rm ./main src/*.gch src/*.exe results/*.png
 
 complete: clean run plot
 
