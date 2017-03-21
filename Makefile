@@ -3,10 +3,18 @@ all: build
 build:
 	g++ -std=c++11 src/main.cpp -o main
 
-clean:
-	-rm ./main src/*.gch src/*.exe results/*.png
+clean_obj:
+	-rm ./main src/*.gch src/*.exe
 
-complete: clean run plot
+clean_graph:
+	-rm results/*.png
+
+clean_data:
+	-rm results/data*.txt
+
+clean_all: clean_obj clean_graph clean_data
+
+complete: clean_obj run plot
 
 plot:
 	cd results; gnuplot plot_file.plt;

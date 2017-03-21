@@ -1,3 +1,5 @@
-main.exe
-results/*
-!results/plot_file.plt
+*.exe
+src/*.exe
+src/*.gch
+
+results/*.txt

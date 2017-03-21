@@ -7,7 +7,7 @@ set key top left
 
 # todo: add titles
 
-do for [m=1:2] {
+do for [m=1:3] {
     do for [i=1:3] {
     	datafile = "data_".i."_".m.".txt"
 

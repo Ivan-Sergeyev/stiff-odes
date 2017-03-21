@@ -105,7 +105,7 @@ inline Variables<N> operator / (const Variables<N>& v, double n) {
 }
 
 template <int N>
-ostream& operator << (ostream& out, const Variables<N> v ) {
+ostream& operator << (ostream& out, const Variables<N> v) {
     for (int i = 0; i < N - 1; ++i) {
         out << v[i] << '\t';
     }
