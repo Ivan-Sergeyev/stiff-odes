@@ -89,12 +89,6 @@
 Сергеев Иван, 422
 \end_layout
 
-\begin_layout Standard
-todo : исследование на сходимость (см.
- Петров, с.
- 203)
-\end_layout
-
 \begin_layout Section
 Постановка задачи
 \end_layout
@@ -116,7 +110,7 @@ todo : исследование на сходимость (см.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \begin{equation}
 \begin{cases}
 \dot{x} & =x\left(1-\frac{1}{2}x-\frac{2}{7\alpha^{2}}y\right)\\
@@ -131,24 +125,24 @@ todo : исследование на сходимость (см.
 \end_layout
 
 \begin_layout Standard
-Начальные условия:
+Начальные условия: 
 \begin_inset Formula $0<\varepsilon\le10^{-2}$
 \end_inset
 
-,
+, 
 \begin_inset Formula $0\le x_{0}\le3$
 \end_inset
 
-,
+, 
 \begin_inset Formula $0\le y_{0}\le15$
 \end_inset
 
-,
+, 
 \begin_inset Formula $\alpha_{0}=0$
 \end_inset
 
 .
- Время
+ Время 
 \begin_inset Formula $0\le t\le2000$
 \end_inset
 
@@ -165,7 +159,7 @@ todo : исследование на сходимость (см.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \begin{equation}
 \begin{cases}
 \dot{x} & =x\left(2\alpha_{1}-\frac{1}{2}x-\frac{\alpha_{1}^{2}}{\alpha_{2}^{2}}y\right)\\
@@ -181,28 +175,28 @@ todo : исследование на сходимость (см.
 \end_layout
 
 \begin_layout Standard
-Начальные условия:
+Начальные условия: 
 \begin_inset Formula $0<\varepsilon\le10^{-2}$
 \end_inset
 
-,
+, 
 \begin_inset Formula $0\le x_{0}\le40$
 \end_inset
 
-,
+, 
 \begin_inset Formula $0\le y_{0}\le40$
 \end_inset
 
-,
+, 
 \begin_inset Formula $\alpha_{10}=0$
 \end_inset
 
-,
+, 
 \begin_inset Formula $\alpha_{20}=10$
 \end_inset
 
 .
- Время
+ Время 
 \begin_inset Formula $0\le t\le2000$
 \end_inset
 
@@ -218,7 +212,7 @@ todo : исследование на сходимость (см.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \begin{equation}
 \begin{cases}
 \dot{x} & =x\left(2\alpha_{1}-\frac{1}{2}x-\frac{\alpha_{1}^{3}}{\alpha_{2}^{3}}y\right)\\
@@ -234,28 +228,28 @@ todo : исследование на сходимость (см.
 \end_layout
 
 \begin_layout Standard
-Начальные условия:
+Начальные условия: 
 \begin_inset Formula $0<\varepsilon\le10^{-2}$
 \end_inset
 
-,
+, 
 \begin_inset Formula $0\le x_{0}\le40$
 \end_inset
 
-,
+, 
 \begin_inset Formula $0\le y_{0}\le40$
 \end_inset
 
-,
+, 
 \begin_inset Formula $\alpha_{10}=0$
 \end_inset
 
-,
+, 
 \begin_inset Formula $\alpha_{20}=10$
 \end_inset
 
 .
- Время
+ Время 
 \begin_inset Formula $0\le t\le2000$
 \end_inset
 
@@ -266,21 +260,44 @@ todo : исследование на сходимость (см.
 Используемые методы
 \end_layout
 
-\begin_layout Standard
-Для удобства записи обозначим
-\begin_inset Formula $u$
-\end_inset
-
- вектор неизвестных, правую часть системы –
-\begin_inset Formula $f\left(u\right)$
-\end_inset
-
-.
- В этих обозначениях системы уравнений имеет компактный вид:
+\begin_layout Subsection*
+Общие замечания
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+Используемые методы: явные методы Рунге-Кутты первого и четвёртого порядка
+ точности, неявный метод Рунге-Кутты 4 порядка точности.
+\end_layout
+
+\begin_layout Standard
+Для удобства записи введены обозначения: 
+\begin_inset Formula $u$
+\end_inset
+
+ – вектор неизвестных, 
+\begin_inset Formula $f\left(u\right)$
+\end_inset
+
+ – правая часть системы уравнений.
+ В этих обозначениях системы уравнений 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:system-1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:system-3"
+
+\end_inset
+
+ записываются в компактном виде:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
 \[
 \dot{u}=f\left(u\right)
 \]
@@ -290,12 +307,53 @@ todo : исследование на сходимость (см.
 
 \end_layout
 
-\begin_layout Subsection
-Явный метод Рунге-Кутты первого порядка точности
+\begin_layout Standard
+Для явных методов Рунге-Кутты используется схема бегущего счёта.
+ Для неявного метода .
+ Погрешность метода Рунге-Кутты 
+\begin_inset Formula $p$
+\end_inset
+
+-ого порядка можно оценить, используя результаты вычислений, проведённых
+ с шагом по времени 
+\begin_inset Formula $\tau$
+\end_inset
+
+ и с шагом 
+\begin_inset Formula $\frac{\tau}{2}$
+\end_inset
+
+:
 \end_layout
 
-\begin_layout Subsubsection
-Схема вычислений
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\epsilon=\frac{\left|\left|u_{n}-u_{2n}\right|\right|}{2^{p}-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+В численных расчётах используется схема с автоматическим выбором шага интегриров
+ания: если погрешность на данном шаге превышает наперёд заданную, то шаг
+ интегрирования уменьшается в 
+\begin_inset Formula $2$
+\end_inset
+
+ раза до достижения требуемой точности, а если погрешность на данном шаге
+ много меньше заданной, шаг интегрирования увеличивается в 
+\begin_inset Formula $2$
+\end_inset
+
+ раза.
+\end_layout
+
+\begin_layout Subsection
+Явный метод Рунге-Кутты первого порядка точности
 \end_layout
 
 \begin_layout Standard
@@ -384,11 +442,11 @@ status open
 \end_layout
 
 \begin_layout Standard
-Схема вычислений
+На каждом шаге выполняется пересчёт решения:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
 k_{1}=f\left(u_{n}\right)
 \]
@@ -399,54 +457,18 @@ k_{1}=f\left(u_{n}\right)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-u_{n+1}=u_{n}+\tau k_{1}
+u_{n+1}=u_{n}+\tau\cdot k_{1}
 \]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Погрешность метода выражается через результаты вычислений, проведённых с
- шагом по времени
-\begin_inset Formula $\tau$
-\end_inset
-
- и с шагом
-\begin_inset Formula $\frac{\tau}{2}$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula
-\[
-\epsilon=\frac{u_{n}-u_{2n}}{2^{1}-1}=u_{n}-u_{2n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Исследование на сходимость по сетке
-\end_layout
-
-\begin_layout Standard
-...
 \end_layout
 
 \begin_layout Subsection
 Явный метод Рунге-Кутты четвёртого порядка точности
-\end_layout
-
-\begin_layout Subsubsection
-Схема вычислений
 \end_layout
 
 \begin_layout Standard
@@ -766,13 +788,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-Схема вычислений
+На каждом шаге выполняется пересчёт решения:
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-k_{1}=\tau\cdot f\left(u_{n}\right)
+k_{1}=f\left(u_{n}\right)
 \]
 
 \end_inset
@@ -781,9 +803,9 @@ k_{1}=\tau\cdot f\left(u_{n}\right)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-k_{2}=\tau\cdot f\left(u_{n}+\frac{k_{1}}{2}\right)
+k_{2}=f\left(u_{n}+\frac{k_{1}}{2}\right)
 \]
 
 \end_inset
@@ -792,9 +814,9 @@ k_{2}=\tau\cdot f\left(u_{n}+\frac{k_{1}}{2}\right)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-k_{3}=\tau\cdot f\left(u_{n}+\frac{k_{2}}{2}\right)
+k_{3}=f\left(u_{n}+\frac{k_{2}}{2}\right)
 \]
 
 \end_inset
@@ -803,9 +825,9 @@ k_{3}=\tau\cdot f\left(u_{n}+\frac{k_{2}}{2}\right)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-k_{4}=\tau\cdot f\left(u_{n}+k_{3}\right)
+k_{4}=f\left(u_{n}+k_{3}\right)
 \]
 
 \end_inset
@@ -814,54 +836,18 @@ k_{4}=\tau\cdot f\left(u_{n}+k_{3}\right)
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-u_{n+1}=u_{n}+\frac{k_{1}+2k_{2}+2k_{3}+k_{4}}{6}
+u_{n+1}=u_{n}+\frac{\tau}{6}\left(k_{1}+2k_{2}+2k_{3}+k_{4}\right)
 \]
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-Погрешность метода выражается через результаты вычислений, проведённых с
- шагом по времени
-\begin_inset Formula $\tau$
-\end_inset
-
- и с шагом
-\begin_inset Formula $\frac{\tau}{2}$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula
-\[
-\epsilon=\frac{u_{n}-u_{2n}}{2^{4}-1}=\frac{u_{n}-u_{2n}}{15}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Исследование на сходимость по сетке
-\end_layout
-
-\begin_layout Standard
-...
 \end_layout
 
 \begin_layout Subsection
 Метод Хаммера-Холлинсворта (неявный метод Рунге-Кутты)
-\end_layout
-
-\begin_layout Subsubsection
-Схема вычислений
 \end_layout
 
 \begin_layout Standard
@@ -1013,30 +999,13 @@ status open
 \end_layout
 
 \begin_layout Standard
-Схема вычислений:
+Пересчёт решения на каждом шаге:
 \end_layout
 
 \begin_layout Standard
-...
-\end_layout
-
-\begin_layout Standard
-Погрешность метода выражается через результаты вычислений, проведённых с
- шагом по времени
-\begin_inset Formula $\tau$
-\end_inset
-
- и с шагом
-\begin_inset Formula $\frac{\tau}{2}$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula
+\begin_inset Formula 
 \[
-\epsilon=\frac{u_{n}-u_{2n}}{2^{4}-1}=\frac{u_{n}-u_{2n}}{15}
+k_{1}=f\left(u_{n}+\tau\cdot\left\{ \frac{1}{4}k_{1}+\left(\frac{1}{4}-\frac{\sqrt{3}}{6}\right)k_{2}\right\} \right)
 \]
 
 \end_inset
@@ -1044,12 +1013,346 @@ status open
 
 \end_layout
 
-\begin_layout Subsubsection
-Исследование на сходимость по сетке
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k_{2}=f\left(u_{n}+\tau\cdot\left\{ \left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}+\frac{1}{4}k_{2}\right\} \right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-...
+\begin_inset Formula 
+\[
+u_{n+1}=u_{n}+\frac{\tau}{2}\left(k_{1}+k_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Метод Хаммера-Холлинсворта является неявным, поэтому его нельзя реализовать
+ бегущим счётом.
+\end_layout
+
+\begin_layout Standard
+Выполним преобразования, чтобы свести схему к решению системы нелинейных
+ уравнений.
+ Будем использовать обозначения
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+l_{1}=\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}+\frac{1}{4}k_{2};\quad l_{2}=k_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Отсюда
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+l_{2}=k_{2}=f\left(u_{n}+\tau\cdot l_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Выразим 
+\begin_inset Formula $\frac{1}{4}k_{1}$
+\end_inset
+
+ через 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $l_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{1}{4}k_{1}=\frac{1}{4}\cdot\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)^{-1}\cdot\left(\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}\right)=\left(1+\frac{2\sqrt{3}}{3}\right)^{-1}\cdot\left(l_{1}-\frac{1}{4}k_{2}\right)=\left(2\sqrt{3}-3\right)\cdot\left(l_{1}-\frac{1}{4}k_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Следовательно
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+k_{1} & =f\left(u_{n}+\tau\cdot\left\{ \frac{1}{4}k_{1}+\left(\frac{1}{4}-\frac{\sqrt{3}}{6}\right)k_{2}\right\} \right)=\\
+ & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\left(\frac{1}{4}-\frac{\sqrt{3}}{6}-\frac{1}{4}\left(2\sqrt{3}-3\right)\right)k_{2}\right\} \right)=\\
+ & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)l_{2}\right\} \right)=\\
+ & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)\cdot f\left(u_{n}+l_{1}\right)\right\} \right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Подставляя полученное в определение 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+, получаем систему нелинейных уравнений, в которых содержится только неизвестный
+ вектор 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+l_{1} & =\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}+\frac{1}{4}k_{2}=\\
+ & =\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)\cdot f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)\cdot f\left(u_{n}+l_{1}\right)\right\} \right)+\frac{1}{4}\cdot f\left(u_{n}+l_{1}\right)=\\
+ & =\frac{1}{12}\left(3+2\sqrt{3}\right)\cdot f\left(u_{n}+\frac{\tau}{3}\cdot\left(2\sqrt{3}-3\right)\cdot\left(3l_{1}-f\left(u_{n}+l_{1}\right)\right)\right)+\frac{1}{4}f\left(u_{n}+l_{1}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Выразим 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+ и 
+\begin_inset Formula $k_{1}$
+\end_inset
+
+ через 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+k_{2}=l_{2}=f\left(u_{n}+\tau\cdot l_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+k_{1} & =\frac{\left(l_{1}-\frac{1}{4}l_{2}\right)}{\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)}=3\cdot\frac{4l_{1}-l_{2}}{3+2\sqrt{3}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Как было указано выше, пересчёт решения осуществляется по формуле:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+u_{n+1}=u_{n}+\frac{\tau}{2}\left(k_{1}+k_{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Таким образом, мы свели схему к решению системы нелинейных уравнений на
+ 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+.
+ Решение этой системы будем искать численно с помощью метода Ньютона.
+\end_layout
+
+\begin_layout Standard
+В общем виде в методе Ньютона для решения уравнения 
+\begin_inset Formula $\boldsymbol{g}\left(\boldsymbol{v}\right)=0$
+\end_inset
+
+ следующее приближение ищется в виде:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boldsymbol{v}^{k+1}=\boldsymbol{v}^{k}+\Delta\boldsymbol{v}^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Разложив 
+\begin_inset Formula $\boldsymbol{g}\left(\boldsymbol{v}\right)$
+\end_inset
+
+ в ряд Тейлора, получим СЛАУ для нахождения 
+\begin_inset Formula $\Delta\boldsymbol{v}^{k}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+g_{1}^{k}+\left(\frac{\partial g_{1}}{\partial v_{1}}\right)^{k}\Delta v_{1}^{k}+\dots+\left(\frac{\partial g_{1}}{\partial v_{n}}\right)^{k}\Delta v_{n}^{k} & =0\\
+\dots\\
+g_{n}^{k}+\left(\frac{\partial g_{n}}{\partial v_{1}}\right)^{k}\Delta v_{1}^{k}+\dots+\left(\frac{\partial g_{n}}{\partial v_{n}}\right)^{k}\Delta v_{n}^{k} & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Если обозначить 
+\begin_inset Formula $H=\left(\frac{\partial g_{j}}{\partial v_{j}}\right)^{k}$
+\end_inset
+
+ матрицу Якоби правой части уравнения на 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ и 
+\begin_inset Formula $\Delta\boldsymbol{v}=\Delta v^{k}$
+\end_inset
+
+ и 
+\begin_inset Formula $\boldsymbol{g}=g_{i}^{k}$
+\end_inset
+
+ векторы неизвестных и правых частей, систему уравнений можно коротко записать
+ в матричном виде:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+H\cdot\Delta\boldsymbol{v}=-\boldsymbol{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Матрица Якоби 
+\begin_inset Formula $H$
+\end_inset
+
+ выражается через матрицу Якоби правой части исходного уравнения:
+\end_layout
+
+\begin_layout Standard
+Матрицы Якоби для систем 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:system-1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:system-3"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J_{1}=\left(\begin{array}{ccc}
+1-x-\frac{2}{7\alpha^{2}}y & -\frac{2}{7\alpha^{2}}x & \frac{4}{7\alpha^{3}}xy\\
+-\frac{7\alpha^{2}}{2}y & 2\alpha-\frac{7\alpha^{2}}{2}x-y & 2y-7\alpha xy\\
+-7\varepsilon\alpha & 0 & -7\varepsilon x
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J_{2}=\left(\begin{array}{cccc}
+2\alpha_{1}-x-\frac{\alpha_{1}^{2}}{\alpha_{2}^{2}}y & -\frac{\alpha_{1}^{2}}{\alpha_{2}^{2}}x & 2x-2\frac{\alpha_{1}}{\alpha_{2}^{2}}xy & 2\frac{\alpha_{1}^{2}}{\alpha_{2}^{3}}xy\\
+-\frac{\alpha_{2}^{2}}{\alpha_{1}^{2}}y & 2\alpha_{2}-\frac{\alpha_{2}^{2}}{\alpha_{1}^{2}}x-y & 2\frac{\alpha_{2}^{2}}{\alpha_{1}^{3}}xy & 2y-2\frac{\alpha_{2}}{\alpha_{1}^{2}}xy\\
+0 & -2\varepsilon\frac{\alpha_{1}}{\alpha_{2}^{2}} & -2\varepsilon\frac{1}{\alpha_{2}^{2}}y & 4\varepsilon\frac{\alpha_{1}}{\alpha_{2}^{3}}y\\
+-2\varepsilon\frac{\alpha_{2}}{\alpha_{1}^{2}} & 0 & 4\varepsilon\frac{\alpha_{2}}{\alpha_{1}^{3}}x & -2\varepsilon\frac{1}{\alpha_{1}^{2}}x
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J_{3}=\left(\begin{array}{cccc}
+2\alpha_{1}-x-\frac{\alpha_{1}^{3}}{\alpha_{2}^{3}}y & -\frac{\alpha_{1}^{3}}{\alpha_{2}^{3}}x & 2x-3\frac{\alpha_{1}^{2}}{\alpha_{2}^{3}}xy & 3\frac{\alpha_{1}^{3}}{\alpha_{2}^{4}}xy\\
+-\frac{\alpha_{2}^{3}}{\alpha_{1}^{3}}y & 2\alpha_{2}-\frac{\alpha_{2}^{3}}{\alpha_{1}^{3}}x-y & 3\frac{\alpha_{2}^{3}}{\alpha_{1}^{4}}xy & 2y-3\frac{\alpha_{2}^{2}}{\alpha_{1}^{3}}xy\\
+0 & -2\varepsilon\frac{\alpha_{1}^{2}}{\alpha_{2}^{3}} & -4\varepsilon\frac{\alpha_{1}}{\alpha_{2}^{3}}y & 6\varepsilon\frac{\alpha_{1}^{2}}{\alpha_{2}^{4}}y\\
+-2\varepsilon\frac{\alpha_{2}^{2}}{\alpha_{1}^{3}} & 0 & 6\varepsilon\frac{\alpha_{2}^{2}}{\alpha_{1}^{4}}x & -4\varepsilon\frac{\alpha_{2}}{\alpha_{1}^{3}}x
+\end{array}\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2869,7 +3172,11 @@ key "key-1"
 
 \end_inset
 
+
+\shape italic
 Кондрашов А.С., Хибник А.И.
+
+\shape default
  Экогенетические модели как быстро-медленные системы.
  Исследования по математической биологии.
  1996.

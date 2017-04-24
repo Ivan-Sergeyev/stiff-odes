@@ -1,37 +1,50 @@
 #ifndef RUNGE_KUTTA_H_
 #define RUNGE_KUTTA_H_
 
-#include "variables.h"
+#include "linear_algebra.h"
 
 
 template <class VarType>
 using rhs_f_homog = VarType (*)(VarType, double);
 
 template <class VarType>
-using rk_iter_func = VarType (*)(double, VarType, rhs_f_homog<VarType>, double);
+using rhs_newton_solve = VarType (*)(VarType, double);
+
+template <class VarType>
+using rk_iter_func = VarType (*)(double, VarType, rhs_f_homog<VarType>, double,
+                                 double);
 
 template <class VarType>
 VarType rk1_expl_iter(double tau, VarType arg,
-                      rhs_f_homog<VarType> rhs, double epsilon) {
-    VarType k1 = rhs(arg, epsilon) * tau;
-    return arg + k1;
+                      rhs_f_homog<VarType> rhs, double epsilon,
+                      double allow_error) {
+    VarType k1(rhs(arg, epsilon));
+    return arg + k1 * tau;
 }
 
 template <class VarType>
 VarType rk4_expl_iter(double tau, VarType arg,
-                      rhs_f_homog<VarType> rhs, double epsilon) {
-    VarType k1 = rhs(arg, epsilon) * tau;
-    VarType k2 = rhs(arg + k1 * 0.5, epsilon) * tau;
-    VarType k3 = rhs(arg + k2 * 0.5, epsilon) * tau;
-    VarType k4 = rhs(arg + k3, epsilon) * tau;
-    return arg + (k1 + k2 * 2 + k3 * 2 + k4) / 6;
+                      rhs_f_homog<VarType> rhs, double epsilon,
+                      double allow_error) {
+    VarType k1(rhs(arg, epsilon));
+    VarType k2(rhs(arg + k1 * tau / 2, epsilon));
+    VarType k3(rhs(arg + k2 * tau / 2, epsilon));
+    VarType k4(rhs(arg + k3 * tau, epsilon));
+    return VarType(arg + (k1 + k2 * 2 + k3 * 2 + k4) * tau / 6);
 }
 
 template <class VarType>
 VarType rk4_impl_iter(double tau, VarType arg,
-                      rhs_f_homog<VarType> rhs, double epsilon) {
-// todo : implement the third method
-    return arg;
+                      rhs_f_homog<VarType> rhs,
+                      double epsilon,
+                      double allow_error) {
+    // VarType l_curr = arg;
+    VarType l_next = arg;
+    // do {
+    //     l_curr = l_next;
+    //     l_next = rhs_newton_solve(tau, arg, epsilon) + l_curr;
+    // } while ((l_curr - l_next).norm_max() > allow_error);
+    return l_next;
 }
 
 const int RK_METHOD_NUM = 3;

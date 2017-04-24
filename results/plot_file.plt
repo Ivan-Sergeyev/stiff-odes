@@ -7,7 +7,7 @@ set key top left
 
 # todo: add titles
 
-do for [m=1:3] {
+do for [m=1:2] {  # m=1:3
     do for [i=1:3] {
     	datafile = "data_".i."_".m.".txt"
 
@@ -28,6 +28,7 @@ do for [m=1:3] {
     }
 
     datafile = "data_1_".m.".txt"
+
     set output "graph_1_".m."_a.png"
     set xlabel "t" offset 0,0.5,0
     set ylabel "α" offset 2,0,0
