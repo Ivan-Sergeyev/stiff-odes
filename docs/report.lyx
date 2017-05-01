@@ -1043,7 +1043,7 @@ u_{n+1}=u_{n}+\frac{\tau}{2}\left(k_{1}+k_{2}\right)
 \begin_layout Standard
 Выполним преобразования, чтобы свести схему к решению системы нелинейных
  уравнений.
- Будем использовать обозначения
+ Обозначим
 \end_layout
 
 \begin_layout Standard
@@ -1091,7 +1091,7 @@ l_{2}=k_{2}=f\left(u_{n}+\tau\cdot l_{1}\right)
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\frac{1}{4}k_{1}=\frac{1}{4}\cdot\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)^{-1}\cdot\left(\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}\right)=\left(1+\frac{2\sqrt{3}}{3}\right)^{-1}\cdot\left(l_{1}-\frac{1}{4}k_{2}\right)=\left(2\sqrt{3}-3\right)\cdot\left(l_{1}-\frac{1}{4}k_{2}\right)
+\frac{1}{4}k_{1}=\frac{1}{4}\cdot\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)^{-1}\cdot\left(\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}\right)=\left(2\sqrt{3}-3\right)\cdot\left(l_{1}-\frac{1}{4}k_{2}\right)
 \]
 
 \end_inset
@@ -1109,7 +1109,8 @@ l_{2}=k_{2}=f\left(u_{n}+\tau\cdot l_{1}\right)
 k_{1} & =f\left(u_{n}+\tau\cdot\left\{ \frac{1}{4}k_{1}+\left(\frac{1}{4}-\frac{\sqrt{3}}{6}\right)k_{2}\right\} \right)=\\
  & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\left(\frac{1}{4}-\frac{\sqrt{3}}{6}-\frac{1}{4}\left(2\sqrt{3}-3\right)\right)k_{2}\right\} \right)=\\
  & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)l_{2}\right\} \right)=\\
- & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)\cdot f\left(u_{n}+l_{1}\right)\right\} \right)
+ & =f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)\cdot f\left(u_{n}+\tau\cdot l_{1}\right)\right\} \right)=\\
+ & =f\left(u_{n}+\frac{\left(2\sqrt{3}-3\right)\tau}{3}\left\{ 3l_{1}-f\left(u_{n}+\tau\cdot l_{1}\right)\right\} \right)
 \end{align*}
 
 \end_inset
@@ -1122,8 +1123,7 @@ k_{1} & =f\left(u_{n}+\tau\cdot\left\{ \frac{1}{4}k_{1}+\left(\frac{1}{4}-\frac{
 \begin_inset Formula $l_{1}$
 \end_inset
 
-, получаем систему нелинейных уравнений, в которых содержится только неизвестный
- вектор 
+, получаем систему нелинейных уравнений относительно 
 \begin_inset Formula $l_{1}$
 \end_inset
 
@@ -1134,8 +1134,7 @@ k_{1} & =f\left(u_{n}+\tau\cdot\left\{ \frac{1}{4}k_{1}+\left(\frac{1}{4}-\frac{
 \begin_inset Formula 
 \begin{align*}
 l_{1} & =\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)k_{1}+\frac{1}{4}k_{2}=\\
- & =\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)\cdot f\left(u_{n}+\tau\cdot\left\{ \left(2\sqrt{3}-3\right)l_{1}+\frac{1}{3}\left(3-2\sqrt{3}\right)\cdot f\left(u_{n}+l_{1}\right)\right\} \right)+\frac{1}{4}\cdot f\left(u_{n}+l_{1}\right)=\\
- & =\frac{1}{12}\left(3+2\sqrt{3}\right)\cdot f\left(u_{n}+\frac{\tau}{3}\cdot\left(2\sqrt{3}-3\right)\cdot\left(3l_{1}-f\left(u_{n}+l_{1}\right)\right)\right)+\frac{1}{4}f\left(u_{n}+l_{1}\right)
+ & =\frac{\left(3+2\sqrt{3}\right)}{12}\cdot f\left(u_{n}+\frac{\left(2\sqrt{3}-3\right)\tau}{3}\cdot\left(3l_{1}-f\left(u_{n}+\tau\cdot l_{1}\right)\right)\right)+\frac{1}{4}f\left(u_{n}+\tau\cdot l_{1}\right)
 \end{align*}
 
 \end_inset
@@ -1172,9 +1171,9 @@ k_{2}=l_{2}=f\left(u_{n}+\tau\cdot l_{1}\right)
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-k_{1} & =\frac{\left(l_{1}-\frac{1}{4}l_{2}\right)}{\left(\frac{1}{4}+\frac{\sqrt{3}}{6}\right)}=3\cdot\frac{4l_{1}-l_{2}}{3+2\sqrt{3}}
-\end{align*}
+\[
+k_{1}=\left(2\sqrt{3}-3\right)\cdot\left(4l_{1}-l_{2}\right)
+\]
 
 \end_inset
 
@@ -1207,11 +1206,34 @@ u_{n+1}=u_{n}+\frac{\tau}{2}\left(k_{1}+k_{2}\right)
 \end_layout
 
 \begin_layout Standard
-В общем виде в методе Ньютона для решения уравнения 
+Представим уравнение на 
+\begin_inset Formula $l_{1}$
+\end_inset
+
+ в виде 
 \begin_inset Formula $\boldsymbol{g}\left(\boldsymbol{v}\right)=0$
 \end_inset
 
- следующее приближение ищется в виде:
+ , где переменной является 
+\begin_inset Formula $v=l_{1}$
+\end_inset
+
+, а функция
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g=\frac{\left(3+2\sqrt{3}\right)}{12}\cdot f\left(u_{n}+\frac{\left(2\sqrt{3}-3\right)\tau}{3}\cdot\left(3l_{1}-f\left(u_{n}+\tau\cdot l_{1}\right)\right)\right)+\frac{1}{4}f\left(u_{n}+\tau\cdot l_{1}\right)-l_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Следующее приближение решения уравнения ищется в виде:
 \end_layout
 
 \begin_layout Standard
@@ -1239,11 +1261,9 @@ u_{n+1}=u_{n}+\frac{\tau}{2}\left(k_{1}+k_{2}\right)
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{align*}
-g_{1}^{k}+\left(\frac{\partial g_{1}}{\partial v_{1}}\right)^{k}\Delta v_{1}^{k}+\dots+\left(\frac{\partial g_{1}}{\partial v_{n}}\right)^{k}\Delta v_{n}^{k} & =0\\
-\dots\\
-g_{n}^{k}+\left(\frac{\partial g_{n}}{\partial v_{1}}\right)^{k}\Delta v_{1}^{k}+\dots+\left(\frac{\partial g_{n}}{\partial v_{n}}\right)^{k}\Delta v_{n}^{k} & =0
-\end{align*}
+\[
+\boldsymbol{g}^{k}+\left(\frac{\partial\boldsymbol{g}}{\partial\boldsymbol{v}}\right)^{k}\cdot\Delta\boldsymbol{v}^{k}=0
+\]
 
 \end_inset
 
@@ -1252,7 +1272,7 @@ g_{n}^{k}+\left(\frac{\partial g_{n}}{\partial v_{1}}\right)^{k}\Delta v_{1}^{k}
 
 \begin_layout Standard
 Если обозначить 
-\begin_inset Formula $H=\left(\frac{\partial g_{j}}{\partial v_{j}}\right)^{k}$
+\begin_inset Formula $H=\left(\frac{\partial\boldsymbol{g}}{\partial\boldsymbol{v}}\right)^{k}$
 \end_inset
 
  матрицу Якоби правой части уравнения на 
@@ -1283,11 +1303,38 @@ H\cdot\Delta\boldsymbol{v}=-\boldsymbol{g}
 \end_layout
 
 \begin_layout Standard
+Отсюда поправка
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Delta\boldsymbol{v}=-H^{-1}\cdot\boldsymbol{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Матрица Якоби 
 \begin_inset Formula $H$
 \end_inset
 
  выражается через матрицу Якоби правой части исходного уравнения:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+H & =\frac{\left(3+2\sqrt{3}\right)}{12}\cdot J\left(u_{n}+\frac{\left(2\sqrt{3}-3\right)\tau}{3}\cdot\left(3l_{1}-f\left(u_{n}+\tau\cdot l_{1}\right)\right)\right)\cdot\frac{\left(2\sqrt{3}-3\right)\tau}{3}\cdot\left(3E-\tau\cdot J\left(u_{n}+\tau\cdot l_{1}\right)\right)+\frac{\tau}{4}J\left(u_{n}+\tau\cdot l_{1}\right)-E=\\
+ & =\frac{\tau}{12}J\left(u_{n}+\frac{\left(2\sqrt{3}-3\right)\tau}{3}\cdot\left(3l_{1}-f\left(u_{n}+\tau\cdot l_{1}\right)\right)\right)\cdot\left(3E-\tau\cdot J\left(u_{n}+\tau\cdot l_{1}\right)\right)+\frac{\tau}{4}J\left(u_{n}+\tau\cdot l_{1}\right)-E
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1401,9 +1448,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -1413,10 +1460,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -1439,9 +1485,46 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_y_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_a_t.png
+	display false
+	width 100text%
 
 \end_inset
 
@@ -1476,9 +1559,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_xy.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_y_x.png
 	display false
-	width 42text%
+	width 26.79text%
 
 \end_inset
 
@@ -1501,7 +1584,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset Formula $\alpha\left(t\right)$
+\begin_inset Formula $x\left(\alpha\right)$
 \end_inset
 
 
@@ -1514,9 +1597,47 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_a.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_x_a.png
 	display false
-	width 42text%
+	width 26.79text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_1_y_a.png
+	display false
+	width 26.79text%
 
 \end_inset
 
@@ -1575,9 +1696,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -1587,10 +1708,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -1613,9 +1733,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_y_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -1628,44 +1748,6 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_xy.png
-	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -1688,9 +1770,122 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_a.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_a_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_y_x.png
+	display false
+	width 26.79text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_x_a.png
+	display false
+	width 26.79text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_2_y_a.png
+	display false
+	width 26.79text%
 
 \end_inset
 
@@ -1749,9 +1944,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -1761,10 +1956,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -1787,9 +1981,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_y_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -1802,44 +1996,6 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_xy.png
-	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -1862,9 +2018,122 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_a.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_a_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_y_x.png
+	display false
+	width 26.79text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_x_a.png
+	display false
+	width 26.79text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_1_3_y_a.png
+	display false
+	width 26.79text%
 
 \end_inset
 
@@ -1923,9 +2192,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -1935,10 +2204,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -1961,46 +2229,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_y_t.png
 	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_xy.png
-	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2035,9 +2266,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_a1.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_a1_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2047,10 +2278,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2073,9 +2303,160 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_a2.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_a2_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_y_x.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_x_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_y_a2.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_1_a2_a1.png
+	display false
+	width 21.43text%
 
 \end_inset
 
@@ -2134,9 +2515,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2146,10 +2527,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2172,46 +2552,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_y_t.png
 	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_xy.png
-	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2246,9 +2589,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_a1.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_a1_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2258,10 +2601,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2284,9 +2626,160 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_a2.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_a2_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_y_x.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_x_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_y_a2.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_2_a2_a1.png
+	display false
+	width 21.43text%
 
 \end_inset
 
@@ -2345,9 +2838,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2357,10 +2850,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2383,46 +2875,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_y_t.png
 	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_xy.png
-	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2457,9 +2912,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_a1.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_a1_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2469,10 +2924,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2495,9 +2949,160 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_a2.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_a2_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_y_x.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_x_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_y_a2.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_2_3_a2_a1.png
+	display false
+	width 21.43text%
 
 \end_inset
 
@@ -2556,9 +3161,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2568,10 +3173,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2594,46 +3198,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_y_t.png
 	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_xy.png
-	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2668,9 +3235,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_a1.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_a1_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2680,10 +3247,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2706,9 +3272,160 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_a2.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_a2_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_y_x.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_x_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_y_a2.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_1_a2_a1.png
+	display false
+	width 21.43text%
 
 \end_inset
 
@@ -2767,9 +3484,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2779,10 +3496,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2805,46 +3521,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_y_t.png
 	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_xy.png
-	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2879,9 +3558,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_a1.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_a1_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2891,10 +3570,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -2917,9 +3595,160 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_a2.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_a2_t.png
 	display false
-	width 42text%
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_y_x.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_x_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_y_a2.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_2_a2_a1.png
+	display false
+	width 21.43text%
 
 \end_inset
 
@@ -2978,9 +3807,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_x.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_x_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -2990,10 +3819,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -3016,46 +3844,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_y.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_y_t.png
 	display false
-	width 42text%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset Formula $y\left(x\right)$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_xy.png
-	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -3090,9 +3881,9 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_a1.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_a1_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
@@ -3102,10 +3893,9 @@ status collapsed
 \end_inset
 
 
-\begin_inset space \hfill{}
-\end_inset
+\end_layout
 
-
+\begin_layout Plain Layout
 \begin_inset Float figure
 wide false
 sideways false
@@ -3128,14 +3918,929 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_a2.png
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_a2_t.png
 	display false
-	width 42text%
+	width 100text%
 
 \end_inset
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(x\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_y_x.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_x_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(\alpha_{2}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_y_a2.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(\alpha_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename D:/Dropbox/mipt/sem 6/comp math/results/graph_3_3_a2_a1.png
+	display false
+	width 21.43text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Использованные начальные данные
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="9" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Задача 1
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Задача 2
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Задача 3
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Погрешность
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-4}=0.0625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-4}=0.0625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-4}=0.0625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Параметр системы
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-7}=0.0078125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-7}=0.0078125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-7}=0.0078125$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Время моделирования
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $4000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2000$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Наибольший шаг интегрирования
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $dt_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-8}=0.00390625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $dt_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-8}=0.00390625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $dt_{0}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2^{-8}=0.00390625$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Начальные значения системы
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $x\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $y\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{1}\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{1}\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha_{2}\left(0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
